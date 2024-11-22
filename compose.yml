@@ -1,0 +1,24 @@
+services:
+  postgres:
+    container_name: "postgres"
+    image: "postgres:17.1"
+    restart: on-failure
+    env_file: ./.env
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+    networks:
+      - global
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
+
+volumes:
+  postgres_db:
+    driver: local
+
+networks:
+  global:
+    driver: bridge

@@ -1,4 +1,4 @@
-package me.aperaverzeu.demo;
+package me.aperaverzeu.rest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package me.aperaverzeu.demo;
+package me.aperaverzeu.rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
