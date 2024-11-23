@@ -29,14 +29,14 @@ public class BasicService {
         return repository.save(basicEntity);
     }
 
-    public BasicEntity modify(BasicEntity basicEntity) {
-        var entity = repository.findById(basicEntity.getId()).orElseThrow();
-        var modifiedEntity = BasicEntity.builder()
-                .id(entity.getId())
-                .name(basicEntity.getName())
-                .values(basicEntity.getValues())
-                .build();
-        return repository.save(modifiedEntity);
+    public BasicEntity modify(BasicEntity basicEntity, Long id) {
+        return repository.findById(id)
+                .map(entity -> {
+                    entity.setName(basicEntity.getName());
+                    entity.setValues(basicEntity.getValues());
+                    return repository.save(entity);
+                })
+                .orElseGet(() -> repository.save(basicEntity));
     }
 
     public void delete(Long id) {
