@@ -38,6 +38,7 @@
 
     <modules>
         <module>rest</module>
+        <module>serverless</module>
     </modules>
 
 </project>

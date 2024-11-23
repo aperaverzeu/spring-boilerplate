@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: serverless
+  cloud:
+    function:
+      destination: hello|destiny|message|translate
+
+server:
+  port: 8081
