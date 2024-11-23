@@ -7,12 +7,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 @Service
 @RequiredArgsConstructor
 public class BasicService {
     private final BasicRepository repository;
+
+    public Optional<BasicEntity> getOneById(Long id) {
+        return repository.findById(id);
+    }
 
     public Optional<BasicEntity> getAny() {
         return repository.findAll().stream().findAny();
@@ -26,14 +29,15 @@ public class BasicService {
         return repository.save(basicEntity);
     }
 
-//    public BasicEntity modify(BasicEntity basicEntity) {
-//        repository.findById(basicEntity.getId())
-//                .ifPresent(
-//                        (Consumer<BasicEntity>) entity -> {
-//                            return repository.save(entity);
-//                        }
-//                );
-//    }
+    public BasicEntity modify(BasicEntity basicEntity) {
+        var entity = repository.findById(basicEntity.getId()).orElseThrow();
+        var modifiedEntity = BasicEntity.builder()
+                .id(entity.getId())
+                .name(basicEntity.getName())
+                .values(basicEntity.getValues())
+                .build();
+        return repository.save(modifiedEntity);
+    }
 
     public void delete(Long id) {
         repository.deleteById(id);
