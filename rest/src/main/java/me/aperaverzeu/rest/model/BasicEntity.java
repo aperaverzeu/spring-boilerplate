@@ -7,8 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -17,8 +16,7 @@ import java.util.List;
 @Table(name = "base")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Builder
+@Data
 public class BasicEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
