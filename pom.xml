@@ -37,6 +37,7 @@
     </dependencyManagement>
 
     <modules>
+        <module>graphql</module>
         <module>rest</module>
         <module>serverless</module>
     </modules>
